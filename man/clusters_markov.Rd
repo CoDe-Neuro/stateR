@@ -6,6 +6,9 @@
 \usage{
 clusters_markov(tbl, vars, cVar, sortBy, groupBy, remIntra = FALSE)
 }
+\arguments{
+\item{remIntra}{}
+}
 \description{
 Markovian transitions'
 }

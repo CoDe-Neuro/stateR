@@ -1,4 +1,9 @@
 #' Fractional occupancy'
+#'
+#' @param tbl
+#' @param vars
+#' @param foVar
+#'
 #' @export
 
 nest_fo <- function(tbl, vars, foVar){

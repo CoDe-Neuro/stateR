@@ -6,6 +6,9 @@
 \usage{
 nest_fo(tbl, vars, foVar)
 }
+\arguments{
+\item{foVar}{}
+}
 \description{
 Fractional occupancy'
 }

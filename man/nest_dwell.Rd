@@ -6,6 +6,9 @@
 \usage{
 nest_dwell(tbl, vars, foVar, sortBy)
 }
+\arguments{
+\item{sortBy}{}
+}
 \description{
 Dwelling time'
 }

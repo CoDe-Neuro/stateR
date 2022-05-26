@@ -1,4 +1,12 @@
 #' Markovian transitions'
+#'
+#' @param tbl
+#' @param vars
+#' @param cVar
+#' @param sortBy
+#' @param groupBy
+#' @param remIntra
+#'
 #' @export
 
 clusters_markov <- function(tbl,

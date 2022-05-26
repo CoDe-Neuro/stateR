@@ -1,4 +1,10 @@
 #' Dwelling time'
+#'
+#' @param tbl
+#' @param vars
+#' @param foVar
+#' @param sortBy
+#'
 #' @export
 
 nest_dwell <- function(tbl, vars, foVar, sortBy){
