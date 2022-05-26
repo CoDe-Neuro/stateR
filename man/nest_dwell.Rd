@@ -7,7 +7,14 @@
 nest_dwell(tbl, vars, foVar, sortBy)
 }
 \arguments{
-\item{sortBy}{}
+\item{tbl}{A tibble/dataframe featuring a list of states in time
+- and covariates}
+
+\item{vars}{Variables of interest in the tibble/dataframe}
+
+\item{foVar}{States variable name to obtain Dwelling time}
+
+\item{sortBy}{Time index variable}
 }
 \description{
 Dwelling time'
