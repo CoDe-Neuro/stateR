@@ -2,13 +2,20 @@
 % Please edit documentation in R/nest_fo.R
 \name{nest_fo}
 \alias{nest_fo}
-\title{Fractional occupancy'}
+\title{This function estimates the fractional occupancy or probability of
+a series of states.'}
 \usage{
 nest_fo(tbl, vars, foVar)
 }
 \arguments{
-\item{foVar}{}
+\item{tbl}{A tibble/dataframe featuring a list of states in time
+- and covariates}
+
+\item{vars}{Variables of interest in the tibble/dataframe}
+
+\item{foVar}{States variable name to obtain fractional occupancy.}
 }
 \description{
-Fractional occupancy'
+This function estimates the fractional occupancy or probability of
+a series of states.'
 }

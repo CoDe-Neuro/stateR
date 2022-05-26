@@ -2,13 +2,28 @@
 % Please edit documentation in R/clusters_markov.R
 \name{clusters_markov}
 \alias{clusters_markov}
-\title{Markovian transitions'}
+\title{This function reports the likelihood of transition between different states.
+The analysis is performed in a Markovian manner, i.e., without memory and
+all states have the same relevance.'}
 \usage{
 clusters_markov(tbl, vars, cVar, sortBy, groupBy, remIntra = FALSE)
 }
 \arguments{
-\item{remIntra}{}
+\item{tbl}{A tibble/dataframe featuring a list of states in time
+- and covariates.}
+
+\item{vars}{Variables of interest in the tibble/dataframe.}
+
+\item{cVar}{States variable name to obtain transition likelihood.}
+
+\item{sortBy}{Time index variable.}
+
+\item{groupBy}{Grouping variable, e.g., subject or class.}
+
+\item{remIntra}{Logical indicating whether dwelling state transitions should be discarded.}
 }
 \description{
-Markovian transitions'
+This function reports the likelihood of transition between different states.
+The analysis is performed in a Markovian manner, i.e., without memory and
+all states have the same relevance.'
 }

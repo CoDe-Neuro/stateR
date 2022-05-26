@@ -1,8 +1,10 @@
-#' Fractional occupancy'
+#' This function estimates the fractional occupancy or probability of
+#' a series of states.'
 #'
-#' @param tbl
-#' @param vars
-#' @param foVar
+#' @param tbl A tibble/dataframe featuring a list of states in time
+#'  - and covariates
+#' @param vars Variables of interest in the tibble/dataframe
+#' @param foVar States variable name to obtain fractional occupancy.
 #'
 #' @export
 

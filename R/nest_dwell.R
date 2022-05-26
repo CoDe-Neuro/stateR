@@ -1,4 +1,5 @@
-#' Dwelling time'
+#' This function estimates the dwelling time or continuous occupancy of
+#' a series of states.'
 #'
 #' @param tbl A tibble/dataframe featuring a list of states in time
 #'  - and covariates

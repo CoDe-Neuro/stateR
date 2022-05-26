@@ -2,7 +2,8 @@
 % Please edit documentation in R/nest_dwell.R
 \name{nest_dwell}
 \alias{nest_dwell}
-\title{Dwelling time'}
+\title{This function estimates the dwelling time or continuous occupancy of
+a series of states.'}
 \usage{
 nest_dwell(tbl, vars, foVar, sortBy)
 }
@@ -17,5 +18,6 @@ nest_dwell(tbl, vars, foVar, sortBy)
 \item{sortBy}{Time index variable}
 }
 \description{
-Dwelling time'
+This function estimates the dwelling time or continuous occupancy of
+a series of states.'
 }

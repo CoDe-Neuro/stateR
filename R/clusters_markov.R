@@ -1,11 +1,14 @@
-#' Markovian transitions'
+#' This function reports the likelihood of transition between different states.
+#' The analysis is performed in a Markovian manner, i.e., without memory and
+#' all states have the same relevance.'
 #'
-#' @param tbl
-#' @param vars
-#' @param cVar
-#' @param sortBy
-#' @param groupBy
-#' @param remIntra
+#' @param tbl A tibble/dataframe featuring a list of states in time
+#'  - and covariates.
+#' @param vars Variables of interest in the tibble/dataframe.
+#' @param cVar States variable name to obtain transition likelihood.
+#' @param sortBy Time index variable.
+#' @param groupBy Grouping variable, e.g., subject or class.
+#' @param remIntra Logical indicating whether dwelling state transitions should be discarded.
 #'
 #' @export
 
