@@ -151,13 +151,18 @@ trans <- clusters_markov(
   cVar     = "state",
   sortBy   = "time",
   groupBy  = "subject",
-  remIntra = TRUE
+  remIntra = FALSE
 )
 
-trans_results <- trans %>%
+# Unnest fully to flat frame, re-nest cleanly by tag for modelling
+trans_long <- tidyr::unnest(trans, data)
+
+trans_results <- trans_long %>%
+  dplyr::select(tag, dplyr::any_of(c("subject", "group", "pma", "nCount"))) %>%
+  dplyr::group_by(tag) %>%
+  tidyr::nest() %>%
   dplyr::mutate(
-    model = purrr::map(data, ~ lm(nCount ~ group + pma,
-                                   data = dplyr::select(.x, nCount, group, pma))),
+    model = purrr::map(data, ~ lm(nCount ~ group + pma, data = .x)),
     tidy  = purrr::map(model, broom::tidy)
   ) %>%
   dplyr::select(tag, tidy) %>%

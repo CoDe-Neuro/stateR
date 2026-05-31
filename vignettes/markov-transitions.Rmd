@@ -108,8 +108,8 @@ possible `target` on the next time step.
 ## Removing self-transitions
 
 By default `remIntra = FALSE`, so self-transitions (state $i$ → state $i$)
-are included. These reflect dwell time in the transition matrix. If you want
-to study only *genuine state changes*, set `remIntra = TRUE`:
+are included. These reflect dwell time in the transition matrix. If you want to study only *genuine state changes*, you can filter self-transitions
+out of the unnested output using `source != target`:
 
 ```{r no-intra}
 trans_change <- clusters_markov(
@@ -118,13 +118,15 @@ trans_change <- clusters_markov(
   cVar     = "state",
   sortBy   = "time",
   groupBy  = "subject",
-  remIntra = TRUE
+  remIntra = FALSE
 )
 
+# Filter out self-transitions manually (source == target)
 trans_change %>%
   tidyr::unnest(data) %>%
-  dplyr::group_by(tag, source, target) %>%
-  dplyr::summarise(mean_prob = mean(nCount), .groups = "drop") %>%
+  dplyr::filter(source != target) %>%
+  dplyr::group_by(tag) %>%
+  dplyr::summarise(mean_prob = mean(nCount, na.rm = TRUE), .groups = "drop") %>%
   dplyr::arrange(dplyr::desc(mean_prob))
 ```
 
