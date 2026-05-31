@@ -96,8 +96,6 @@ home:
     connectivity time series — computing fractional occupancy, dwell time,
     and Markov-chain transition probabilities. Developed at King's College London.
   links:
-  - text: Circadia Lab
-    href: https://github.com/circadia-bio
   - text: CoDe-Neuro Lab
     href: https://github.com/CoDe-Neuro
   sidebar:
@@ -105,15 +103,12 @@ home:
 
 navbar:
   structure:
-    left:  [intro, reference, articles, news]
+    left:  [reference, news]
     right: [search, github]
   components:
-    intro:
-      text: Get started
-      href: articles/getting-started.html
     github:
       icon: fab fa-github
-      href: https://github.com/circadia-bio/stateR
+      href: https://github.com/CoDe-Neuro/stateR
       aria-label: GitHub
 
 reference:
@@ -129,19 +124,6 @@ reference:
   contents:
   - dwellCount
 
-- title: "Package"
-  desc: "Package-level documentation."
-  contents:
-  - stateR-package
-
-articles:
-- title: "Vignettes"
-  navbar: ~
-  contents:
-  - getting-started
-  - markov-transitions
-  - grouped-pipeline
-
 authors:
   Lucas França:
     href: https://orcid.org/0000-0003-0853-1319
@@ -154,6 +136,6 @@ footer:
     right: [built_with]
   components:
     package: >
-      **stateR** — Circadia Lab / CoDe-Neuro Lab, King's College London.
+      **stateR** — CoDe-Neuro Lab, King's College London.
     developed_by: >
       Lucas França & Dafnis Batallé.

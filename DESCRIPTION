@@ -1,16 +1,27 @@
 Package: stateR
 Type: Package
-Title: Brain states metrics for functional connectivity studies
+Title: Brain State Metrics for Functional Connectivity Studies
 Version: 0.1.0
-Authors@R: 
+Authors@R: c(
     person("Lucas", "França", , "lucas.franca@kcl.ac.uk", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-0853-1319"))
-    person("Dafnis", "Batallé", , "dafnis.batalle@kcl.ac.uk", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-2097-979X"))
+           comment = c(ORCID = "0000-0003-0853-1319")),
+    person("Dafnis", "Batallé", , "dafnis.batalle@kcl.ac.uk", role = c("aut"),
+           comment = c(ORCID = "0000-0003-2097-979X")))
 Maintainer: Lucas França <lucas.franca@kcl.ac.uk>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: MIT
+Description: Provides tidy tools for quantifying brain state dynamics from
+    functional connectivity time series. Computes fractional occupancy,
+    mean dwell time, and Markov-chain transition probabilities across
+    discrete brain states derived from clustering methods such as k-means
+    or hidden Markov models.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.0
+URL: https://circadia-bio.github.io/stateR, https://github.com/circadia-bio/stateR
+BugReports: https://github.com/circadia-bio/stateR/issues
+Imports:
+    dplyr,
+    tidyr,
+    purrr,
+    janitor,
+    glue
