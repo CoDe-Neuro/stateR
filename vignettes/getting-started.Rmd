@@ -1,0 +1,207 @@
+---
+title: "Getting started with stateR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with stateR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment  = "#>"
+)
+library(stateR)
+library(dplyr)
+library(tidyr)
+```
+
+## What is a brain state?
+
+Dynamic functional connectivity analyses parcel resting-state fMRI time series
+into a sequence of discrete **brain states** — recurring patterns of
+whole-brain co-activation identified by clustering methods such as k-means or
+hidden Markov models. Each volume (or window) in the scan is assigned a state
+label, producing a time series like:
+
+```
+0 0 2 2 2 1 1 0 3 3 3 3 1 2 ...
+```
+
+Once you have this sequence, the natural questions are:
+
+- **How often** is each state visited? (*fractional occupancy*)
+- **How long** does each visit last? (*dwell time*)
+- **How likely** is a transition from state A to state B? (*Markov transitions*)
+
+`stateR` answers all three in a tidy, pipeable workflow.
+
+---
+
+## Input format
+
+All three functions expect a **long-format tibble** with one row per subject
+per time point, plus any grouping or covariate columns you want to carry
+through to the output:
+
+| Column | Role |
+|--------|------|
+| Subject / session ID | Grouping — passed via `vars` |
+| Time index | Ordering — passed via `sortBy` |
+| State label | The state sequence — passed via `foVar` or `cVar` |
+| Any covariates | Carried through unchanged |
+
+---
+
+## Simulated data
+
+We simulate five subjects, each with 40 time points and four possible states
+(0–3):
+
+```{r sim-data}
+set.seed(42)
+
+n_subjects  <- 5
+n_timepoints <- 40
+
+tbl <- tibble::tibble(
+  subject = rep(paste0("sub-0", 1:n_subjects), each = n_timepoints),
+  group   = rep(c("term", "preterm"), times = c(3 * n_timepoints,
+                                                 2 * n_timepoints)),
+  time    = rep(seq_len(n_timepoints), n_subjects),
+  state   = sample(0:3, n_subjects * n_timepoints, replace = TRUE)
+)
+
+head(tbl, 8)
+```
+
+---
+
+## Fractional occupancy with `nest_fo()`
+
+`nest_fo()` computes the proportion of time points each subject/group spends
+in each state:
+
+```{r nest-fo}
+fo <- nest_fo(
+  tbl   = tbl,
+  vars  = c("subject", "group"),
+  foVar = "state"
+)
+
+fo
+```
+
+The result is a **state-nested tibble** — one row per state, with a `data`
+list-column holding each subject's fractional occupancy (`perc`):
+
+```{r fo-unnest}
+fo %>%
+  tidyr::unnest(data) %>%
+  head(12)
+```
+
+To work with a specific state:
+
+```{r fo-filter}
+fo %>%
+  tidyr::unnest(data) %>%
+  dplyr::filter(cluster == "2")
+```
+
+---
+
+## Dwell time with `nest_dwell()`
+
+`nest_dwell()` computes the **mean continuous occupancy** per state — the
+average number of consecutive time points spent in a single uninterrupted visit.
+Single time-point visits (dwell = 1) are excluded, as they likely reflect noise
+rather than genuine state occupation.
+
+```{r nest-dwell}
+dwell <- nest_dwell(
+  tbl    = tbl,
+  vars   = c("subject", "group"),
+  foVar  = "state",
+  sortBy = "time"
+)
+
+dwell %>%
+  tidyr::unnest(data)
+```
+
+The `sortBy` argument is critical — it ensures observations are ordered
+chronologically before the run-length encoding that underlies dwell time
+estimation. Always pass the time index column here.
+
+---
+
+## Markov transitions with `clusters_markov()`
+
+`clusters_markov()` computes **transition probabilities** between states. For
+each source state, it counts every observed transition and normalises by the
+total number of transitions out of that source — a first-order Markov chain.
+
+```{r clusters-markov}
+trans <- clusters_markov(
+  tbl      = tbl,
+  vars     = c("subject", "group"),
+  cVar     = "state",
+  sortBy   = "time",
+  groupBy  = "subject",
+  remIntra = FALSE
+)
+
+trans
+```
+
+Transitions are labelled by a `tag` in `"source_target"` format. To inspect a
+specific transition:
+
+```{r markov-filter}
+trans %>%
+  tidyr::unnest(data) %>%
+  dplyr::filter(tag == "0_2")
+```
+
+Set `remIntra = TRUE` to exclude self-transitions (e.g. state 2 → state 2),
+which is useful when you are interested only in genuine state changes:
+
+```{r markov-no-intra}
+clusters_markov(
+  tbl      = tbl,
+  vars     = c("subject", "group"),
+  cVar     = "state",
+  sortBy   = "time",
+  groupBy  = "subject",
+  remIntra = TRUE
+) %>%
+  tidyr::unnest(data) %>%
+  dplyr::filter(tag == "0_2")
+```
+
+---
+
+## Output structure at a glance
+
+All three functions return the same **state-nested tibble** shape:
+
+| Function | Nesting key | Key output column | Unit |
+|----------|-------------|-------------------|------|
+| `nest_fo()` | `cluster` | `perc` | Proportion (0–1) |
+| `nest_dwell()` | `cluster` | `mean_dwell` | Time points |
+| `clusters_markov()` | `tag` (e.g. `"0_2"`) | `nCount` | Probability (0–1) |
+
+This shared shape makes it straightforward to apply the same downstream
+analysis (e.g. permutation tests with
+[`ptestR`](https://github.com/CoDe-Neuro/ptestR)) across all three metrics
+without changing your pipeline.
+
+---
+
+## Further reading
+
+- `vignette("markov-transitions")` — a deeper look at the transition matrix
+- `vignette("grouped-pipeline")` — running statistical tests across all states
+- `?nest_fo`, `?nest_dwell`, `?clusters_markov`

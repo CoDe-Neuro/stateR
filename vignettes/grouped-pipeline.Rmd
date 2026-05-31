@@ -1,0 +1,222 @@
+---
+title: "Grouped pipeline: testing across states"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Grouped pipeline: testing across states}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment  = "#>"
+)
+library(stateR)
+library(dplyr)
+library(tidyr)
+library(purrr)
+```
+
+## Overview
+
+In practice, brain state analyses involve not just computing metrics but testing
+whether those metrics differ between groups or associate with continuous
+variables — and doing so across every state simultaneously. This vignette shows
+the full pipeline:
+
+1. Compute `nest_fo()`, `nest_dwell()`, or `clusters_markov()`
+2. Unnest and filter to one state (or transition) at a time
+3. Apply a statistical model — demonstrated here with base R, and compatible
+   with [`ptestR`](https://github.com/CoDe-Neuro/ptestR) for permutation tests
+
+---
+
+## Simulated data
+
+We simulate 20 subjects (10 term, 10 preterm), each with 80 time points and
+five possible states (0–4). States are drawn with unequal probabilities to
+create realistic differences:
+
+```{r sim-data}
+set.seed(2024)
+
+n_sub <- 20
+n_tp  <- 80
+
+# Preterm subjects spend more time in state 0, term in state 2
+state_probs <- list(
+  term    = c(0.15, 0.20, 0.35, 0.15, 0.15),
+  preterm = c(0.35, 0.20, 0.15, 0.15, 0.15)
+)
+
+tbl <- purrr::map_dfr(seq_len(n_sub), function(i) {
+  grp   <- ifelse(i <= 10, "term", "preterm")
+  probs <- state_probs[[grp]]
+  tibble::tibble(
+    subject = sprintf("sub-%02d", i),
+    group   = grp,
+    pma     = rnorm(1, mean = ifelse(grp == "term", 40, 34), sd = 2),
+    time    = seq_len(n_tp),
+    state   = sample(0:4, n_tp, replace = TRUE, prob = probs)
+  )
+})
+
+dplyr::count(tbl, group)
+```
+
+---
+
+## Step 1 — Compute fractional occupancy
+
+```{r fo}
+fo <- nest_fo(
+  tbl   = tbl,
+  vars  = c("subject", "group", "pma"),
+  foVar = "state"
+)
+
+fo
+```
+
+Each row is a state; the `data` list-column holds one row per subject with
+their `perc` value and any covariates passed via `vars`.
+
+---
+
+## Step 2 — Test each state
+
+Unnesting gives a flat data frame per state. We can map a model across all
+states using `purrr::map()`. Here we use a simple linear model (`lm`) to
+test whether fractional occupancy differs by group — swap in
+`ptestR::grouped_perm_glm()` for a permutation test:
+
+```{r fo-test}
+fo_results <- fo %>%
+  dplyr::mutate(
+    model = purrr::map(data, ~ lm(perc ~ group + pma, data = .x)),
+    tidy  = purrr::map(model, broom::tidy)
+  ) %>%
+  dplyr::select(cluster, tidy) %>%
+  tidyr::unnest(tidy) %>%
+  dplyr::filter(term == "groupterm") %>%
+  dplyr::select(cluster, estimate, statistic, p.value) %>%
+  dplyr::arrange(p.value)
+
+fo_results
+```
+
+Apply FDR correction across all states:
+
+```{r fdr}
+fo_results %>%
+  dplyr::mutate(p.fdr = p.adjust(p.value, method = "fdr"))
+```
+
+---
+
+## Step 3 — Dwell time pipeline
+
+The same pattern works for dwell time:
+
+```{r dwell-test}
+dwell <- nest_dwell(
+  tbl    = tbl,
+  vars   = c("subject", "group", "pma"),
+  foVar  = "state",
+  sortBy = "time"
+)
+
+dwell %>%
+  dplyr::mutate(
+    model = purrr::map(data, ~ lm(mean_dwell ~ group + pma, data = .x)),
+    tidy  = purrr::map(model, broom::tidy)
+  ) %>%
+  dplyr::select(cluster, tidy) %>%
+  tidyr::unnest(tidy) %>%
+  dplyr::filter(term == "groupterm") %>%
+  dplyr::select(cluster, estimate, statistic, p.value)
+```
+
+---
+
+## Step 4 — Markov transition pipeline
+
+For transitions, the nesting key is `tag` rather than `cluster`:
+
+```{r markov-test}
+trans <- clusters_markov(
+  tbl      = tbl,
+  vars     = c("subject", "group", "pma"),
+  cVar     = "state",
+  sortBy   = "time",
+  groupBy  = "subject",
+  remIntra = TRUE
+)
+
+trans_results <- trans %>%
+  dplyr::mutate(
+    model = purrr::map(data, ~ lm(nCount ~ group + pma, data = .x)),
+    tidy  = purrr::map(model, broom::tidy)
+  ) %>%
+  dplyr::select(tag, tidy) %>%
+  tidyr::unnest(tidy) %>%
+  dplyr::filter(term == "groupterm") %>%
+  dplyr::select(tag, estimate, statistic, p.value) %>%
+  dplyr::arrange(p.value)
+
+head(trans_results, 10)
+```
+
+---
+
+## Using `ptestR` for permutation tests
+
+In the dHCP neonatal study, `stateR` outputs were passed directly into
+`ptestR` permutation tests with 10 000 permutations. The swap is one line:
+
+```{r ptestR, eval = FALSE}
+library(ptestR)
+
+fo %>%
+  dplyr::mutate(
+    res = purrr::map(data, ~ grouped_perm_glm(
+      tbl         = .x,
+      formla      = perc ~ group + pma,
+      var_to_perm = "perc",
+      permNum     = 10000,
+      seed        = 42
+    ))
+  ) %>%
+  dplyr::select(cluster, res) %>%
+  tidyr::unnest(res) %>%
+  dplyr::filter(term == "groupterm") %>%
+  dplyr::mutate(p.fdr = p.adjust(p.perm, method = "fdr"))
+```
+
+The same pattern applies to `nest_dwell()` (replace `perc` with
+`mean_dwell`) and `clusters_markov()` (replace `perc` with `nCount` and
+`cluster` with `tag`).
+
+---
+
+## Notes on `vars` and covariate carriage
+
+Any column passed in `vars` is preserved in the `data` list-column and
+therefore available inside every `map()` call. Covariates like `pma`,
+`sex`, or `motion_outliers` should be included in `vars` when you plan to
+use them in the downstream model — they do not need any special handling.
+
+One caution: `vars` for `nest_fo()` and `nest_dwell()` defines the grouping
+for the metric computation. If you include a continuous covariate that varies
+*within* a subject (e.g. a time-varying measure), each unique combination of
+all `vars` values will become its own group. For subject-level covariates (one
+value per subject) this is not a problem.
+
+---
+
+## Further reading
+
+- `vignette("getting-started")` — introduction to the three metrics
+- `vignette("markov-transitions")` — transition matrix in depth
+- [`ptestR`](https://github.com/CoDe-Neuro/ptestR) — permutation tests
