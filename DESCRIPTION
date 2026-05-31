@@ -15,8 +15,8 @@ Description: Provides tidy tools for quantifying brain state dynamics from
     or hidden Markov models.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.2.0
+RoxygenNote: 7.3.2
+VignetteBuilder: knitr
 URL: https://CoDe-Neuro.github.io/stateR, https://github.com/CoDe-Neuro/stateR
 BugReports: https://github.com/CoDe-Neuro/stateR/issues
 Imports:
@@ -25,3 +25,9 @@ Imports:
     purrr,
     janitor,
     glue
+Suggests:
+    knitr,
+    rmarkdown,
+    broom,
+    tibble,
+    testthat (>= 3.0.0)
