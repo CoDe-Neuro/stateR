@@ -3,7 +3,6 @@
 export(clusters_markov)
 export(nest_dwell)
 export(nest_fo)
-
 importFrom(dplyr,"%>%")
 importFrom(dplyr,all_of)
 importFrom(dplyr,arrange)
