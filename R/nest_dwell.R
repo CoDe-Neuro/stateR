@@ -10,11 +10,6 @@
 #' @export
 
 nest_dwell <- function(tbl, vars, foVar, sortBy){
-
-  require(dplyr)
-  require(tidyr)
-  require(janitor)
-
   vars_ <- dplyr::syms(vars)
   vars__ <- dplyr::syms(append(vars, 'cluster'))
   srt_ <- dplyr::syms(sortBy)

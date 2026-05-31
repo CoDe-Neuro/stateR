@@ -4,7 +4,6 @@
 #' @importFrom purrr map
 #' @importFrom janitor tabyl
 #' @importFrom glue glue
-#' @importFrom stats lag
 utils::globalVariables(c(
   "clus", "clusVec", "cluster", "dwell", "fo",
   "n", "tag", "target", "tot", ".x[[i]]"

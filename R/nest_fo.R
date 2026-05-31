@@ -9,11 +9,6 @@
 #' @export
 
 nest_fo <- function(tbl, vars, foVar){
-
-  require(dplyr)
-  require(tidyr)
-  require(janitor)
-
   vars_ <- dplyr::syms(vars)
 
   nested_fo <- tbl %>%

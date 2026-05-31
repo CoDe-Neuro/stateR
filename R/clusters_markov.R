@@ -18,11 +18,6 @@ clusters_markov <- function(tbl,
                             sortBy,
                             groupBy,
                             remIntra = FALSE){
-
-  require(dplyr)
-  require(glue)
-  require(tidyr)
-
   srt_ <- dplyr::syms(sortBy)
   grp_ <- dplyr::syms(groupBy)
   vars_ <- dplyr::syms(append(vars,
