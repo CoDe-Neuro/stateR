@@ -275,7 +275,7 @@ If you use `stateR` in your research, please cite the paper it was developed for
 | Author, maintainer | Lucas G. S. França | King's College London |
 | Author | Dafnis Batallé | King's College London |
 
-Part of the [CoDe-Neuro Lab](https://github.com/CoDe-Neuro) / [Circadia Lab](https://github.com/circadia-bio) at King's College London.
+Part of the [CoDe-Neuro Lab](https://github.com/CoDe-Neuro) at King's College London.
 
 ---
 
