@@ -5,7 +5,7 @@ An R package for characterising **brain state dynamics** from functional connect
 [![Nature Communications](https://img.shields.io/badge/Nature%20Comms-10.1038%2Fs41467--023--44050--z-4CAF50)](https://doi.org/10.1038/s41467-023-44050-z)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![R](https://img.shields.io/badge/R-≥4.0-276DC3.svg)](https://www.r-project.org/)
-[![Version](https://img.shields.io/badge/version-0.1.0-lightgrey)](https://github.com/circadia-bio/stateR)
+[![Version](https://img.shields.io/badge/version-0.1.0-lightgrey)](https://github.com/CoDe-Neuro/stateR)
 
 ---
 
@@ -77,7 +77,7 @@ stateR/
 
 ```r
 # install.packages("remotes")  # if needed
-remotes::install_github("circadia-bio/stateR")
+remotes::install_github("CoDe-Neuro/stateR")
 ```
 
 ### Quick example

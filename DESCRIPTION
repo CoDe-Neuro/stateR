@@ -17,8 +17,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.0
-URL: https://circadia-bio.github.io/stateR, https://github.com/circadia-bio/stateR
-BugReports: https://github.com/circadia-bio/stateR/issues
+URL: https://CoDe-Neuro.github.io/stateR, https://github.com/CoDe-Neuro/stateR
+BugReports: https://github.com/CoDe-Neuro/stateR/issues
 Imports:
     dplyr,
     tidyr,
