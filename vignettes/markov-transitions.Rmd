@@ -123,7 +123,7 @@ trans_change <- clusters_markov(
 
 trans_change %>%
   tidyr::unnest(data) %>%
-  dplyr::group_by(tag) %>%
+  dplyr::group_by(tag, source, target) %>%
   dplyr::summarise(mean_prob = mean(nCount), .groups = "drop") %>%
   dplyr::arrange(dplyr::desc(mean_prob))
 ```

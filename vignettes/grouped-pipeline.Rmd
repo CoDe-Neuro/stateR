@@ -156,7 +156,8 @@ trans <- clusters_markov(
 
 trans_results <- trans %>%
   dplyr::mutate(
-    model = purrr::map(data, ~ lm(nCount ~ group + pma, data = .x)),
+    model = purrr::map(data, ~ lm(nCount ~ group + pma,
+                                   data = dplyr::select(.x, nCount, group, pma))),
     tidy  = purrr::map(model, broom::tidy)
   ) %>%
   dplyr::select(tag, tidy) %>%
