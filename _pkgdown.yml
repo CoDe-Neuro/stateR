@@ -3,12 +3,12 @@ url: https://CoDe-Neuro.github.io/stateR
 template:
   bootstrap: 5
   bslib:
-    bg:              "#FFE0C5"
+    bg:              "#FFF0E4"
     fg:              "#004040"
     primary:         "#007979"
-    secondary:       "#f5c9a0"
+    secondary:       "#FFE0C5"
     success:         "#007979"
-    info:            "#FFE0C5"
+    info:            "#FFF0E4"
     warning:         "#007979"
     danger:          "#004040"
 
@@ -19,12 +19,12 @@ template:
     font-size-base:  "1rem"
     headings-font-weight: 700
 
-    card-bg:         "#FFF0E4"
-    card-border-color: "#f5c9a0"
+    card-bg:         "#FFFAF6"
+    card-border-color: "#FFE0C5"
     card-border-radius: "0.75rem"
 
     pre-bg:          "#004040"
-    pre-color:       "#FFE0C5"
+    pre-color:       "#FFF0E4"
 
   includes:
     in_header: |
@@ -62,11 +62,11 @@ template:
         .sidebar .nav-link.active,
         #toc .nav-link.active {
           color: #007979 !important;
-          border-left: 2px solid #f5c9a0;
+          border-left: 2px solid #FFE0C5;
           font-weight: 600;
         }
         .text-muted { color: #007979 !important; }
-        .sidebar { border-left: 3px solid #f5c9a0; padding-left: 1rem; }
+        .sidebar { border-left: 3px solid #FFE0C5; padding-left: 1rem; }
         .reference-index h2 {
           color: #007979;
           font-size: 0.8rem;
@@ -79,8 +79,8 @@ template:
           border-radius: 4px;
           padding: 0.1em 0.35em;
         }
-        .footer { background: #004040; color: #f5c9a0; padding: 1.5rem 0; }
-        .footer a { color: #FFE0C5; }
+        .footer { background: #004040; color: #FFE0C5; padding: 1.5rem 0; }
+        .footer a { color: #FFF0E4; }
         #search-input { border-color: #007979; }
         .badge.bg-primary { background-color: #007979 !important; }
         a { color: #007979; }
