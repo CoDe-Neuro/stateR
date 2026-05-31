@@ -237,12 +237,6 @@ subject/group spends in each state:</p>
 <span>  vars  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"subject"</span>, <span class="st">"group"</span><span class="op">)</span>,</span>
 <span>  foVar <span class="op">=</span> <span class="st">"state"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading required package: janitor</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'janitor'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     chisq.test, fisher.test</span></span>
 <span></span>
 <span><span class="va">fo</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 2</span></span></span>
@@ -356,17 +350,28 @@ transitions out of that source — a first-order Markov chain.</p>
 <span>  groupBy  <span class="op">=</span> <span class="st">"subject"</span>,</span>
 <span>  remIntra <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading required package: glue</span></span>
 <span></span>
 <span><span class="va">trans</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [4]</span></span></span>
-<span><span class="co">#&gt;   source target tag   data            </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      0      0 0_0   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      1      1 1_1   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      2      2 2_2   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      3      3 3_3   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [16]</span></span></span>
+<span><span class="co">#&gt;    source target tag   data            </span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      0      0 0_0   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      0      1 0_1   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      0      2 0_2   <span style="color: #949494;">&lt;tibble [4 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      0      3 0_3   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      1      0 1_0   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      1      1 1_1   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      1      2 1_2   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      1      3 1_3   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2      0 2_0   <span style="color: #949494;">&lt;tibble [4 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2      1 2_1   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>      2      2 2_2   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>      2      3 2_3   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span>      3      0 3_0   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span>      3      1 3_1   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span>      3      2 3_2   <span style="color: #949494;">&lt;tibble [4 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span>      3      3 3_3   <span style="color: #949494;">&lt;tibble [5 × 5]&gt;</span></span></span></code></pre></div>
 <p>Transitions are labelled by a <code>tag</code> in
 <code>"source_target"</code> format. To inspect a specific
 transition:</p>
@@ -374,10 +379,14 @@ transition:</p>
 <code class="sourceCode R"><span><span class="va">trans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">tag</span> <span class="op">==</span> <span class="st">"0_2"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 8</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [0]</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 variables: source &lt;int&gt;, target &lt;int&gt;, tag &lt;chr&gt;, subject &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   group &lt;chr&gt;, n &lt;table[1d]&gt;, tot &lt;int&gt;, nCount &lt;table[1d]&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 8</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [1]</span></span></span>
+<span><span class="co">#&gt;   source target tag   subject group   n             tot nCount     </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;table[1d]&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;table[1d]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      0      2 0_2   sub-01  term    2              13 0.15384615 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      0      2 0_2   sub-02  term    1               8 0.12500000 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      0      2 0_2   sub-03  term    1              13 0.07692308 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      0      2 0_2   sub-04  preterm 4              15 0.26666667</span></span></code></pre></div>
 <p>Set <code>remIntra = TRUE</code> to exclude self-transitions
 (e.g. state 2 → state 2), which is useful when you are interested only
 in genuine state changes:</p>
@@ -392,9 +401,14 @@ in genuine state changes:</p>
 <span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">tag</span> <span class="op">==</span> <span class="st">"0_2"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 4</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [0]</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 variables: source &lt;int&gt;, target &lt;int&gt;, tag &lt;chr&gt;, data &lt;???&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 8</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [1]</span></span></span>
+<span><span class="co">#&gt;   source target tag   subject group   n             tot nCount     </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;table[1d]&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;table[1d]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      0      2 0_2   sub-01  term    2               7 0.28571429 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      0      2 0_2   sub-02  term    1               5 0.20000000 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      0      2 0_2   sub-03  term    1              11 0.09090909 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      0      2 0_2   sub-04  preterm 4               8 0.50000000</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">

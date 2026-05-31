@@ -85,12 +85,6 @@ fo <- nest_fo(
   vars  = c("subject", "group"),
   foVar = "state"
 )
-#> Loading required package: janitor
-#> 
-#> Attaching package: 'janitor'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     chisq.test, fisher.test
 
 fo
 #> # A tibble: 4 × 2
@@ -217,17 +211,28 @@ trans <- clusters_markov(
   groupBy  = "subject",
   remIntra = FALSE
 )
-#> Loading required package: glue
 
 trans
-#> # A tibble: 4 × 4
-#> # Groups:   tag, source, target [4]
-#>   source target tag   data            
-#>    <int>  <int> <chr> <list>          
-#> 1      0      0 0_0   <tibble [5 × 5]>
-#> 2      1      1 1_1   <tibble [5 × 5]>
-#> 3      2      2 2_2   <tibble [5 × 5]>
-#> 4      3      3 3_3   <tibble [5 × 5]>
+#> # A tibble: 16 × 4
+#> # Groups:   tag, source, target [16]
+#>    source target tag   data            
+#>     <int>  <int> <chr> <list>          
+#>  1      0      0 0_0   <tibble [5 × 5]>
+#>  2      0      1 0_1   <tibble [5 × 5]>
+#>  3      0      2 0_2   <tibble [4 × 5]>
+#>  4      0      3 0_3   <tibble [5 × 5]>
+#>  5      1      0 1_0   <tibble [5 × 5]>
+#>  6      1      1 1_1   <tibble [5 × 5]>
+#>  7      1      2 1_2   <tibble [5 × 5]>
+#>  8      1      3 1_3   <tibble [5 × 5]>
+#>  9      2      0 2_0   <tibble [4 × 5]>
+#> 10      2      1 2_1   <tibble [5 × 5]>
+#> 11      2      2 2_2   <tibble [5 × 5]>
+#> 12      2      3 2_3   <tibble [5 × 5]>
+#> 13      3      0 3_0   <tibble [5 × 5]>
+#> 14      3      1 3_1   <tibble [5 × 5]>
+#> 15      3      2 3_2   <tibble [4 × 5]>
+#> 16      3      3 3_3   <tibble [5 × 5]>
 ```
 
 Transitions are labelled by a `tag` in `"source_target"` format. To
@@ -238,10 +243,14 @@ inspect a specific transition:
 trans %>%
   tidyr::unnest(data) %>%
   dplyr::filter(tag == "0_2")
-#> # A tibble: 0 × 8
-#> # Groups:   tag, source, target [0]
-#> # ℹ 8 variables: source <int>, target <int>, tag <chr>, subject <chr>,
-#> #   group <chr>, n <table[1d]>, tot <int>, nCount <table[1d]>
+#> # A tibble: 4 × 8
+#> # Groups:   tag, source, target [1]
+#>   source target tag   subject group   n             tot nCount     
+#>    <int>  <int> <chr> <chr>   <chr>   <table[1d]> <int> <table[1d]>
+#> 1      0      2 0_2   sub-01  term    2              13 0.15384615 
+#> 2      0      2 0_2   sub-02  term    1               8 0.12500000 
+#> 3      0      2 0_2   sub-03  term    1              13 0.07692308 
+#> 4      0      2 0_2   sub-04  preterm 4              15 0.26666667
 ```
 
 Set `remIntra = TRUE` to exclude self-transitions (e.g. state 2 → state
@@ -260,9 +269,14 @@ clusters_markov(
 ) %>%
   tidyr::unnest(data) %>%
   dplyr::filter(tag == "0_2")
-#> # A tibble: 0 × 4
-#> # Groups:   tag, source, target [0]
-#> # ℹ 4 variables: source <int>, target <int>, tag <chr>, data <???>
+#> # A tibble: 4 × 8
+#> # Groups:   tag, source, target [1]
+#>   source target tag   subject group   n             tot nCount     
+#>    <int>  <int> <chr> <chr>   <chr>   <table[1d]> <int> <table[1d]>
+#> 1      0      2 0_2   sub-01  term    2               7 0.28571429 
+#> 2      0      2 0_2   sub-02  term    1               5 0.20000000 
+#> 3      0      2 0_2   sub-03  term    1              11 0.09090909 
+#> 4      0      2 0_2   sub-04  preterm 4               8 0.50000000
 ```
 
 ------------------------------------------------------------------------

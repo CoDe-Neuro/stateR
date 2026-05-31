@@ -188,17 +188,28 @@ and from</strong>, and <strong>how probable each transition is</strong>
 <span>  groupBy  <span class="op">=</span> <span class="st">"subject"</span>,</span>
 <span>  remIntra <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading required package: glue</span></span>
 <span></span>
 <span><span class="va">trans</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [4]</span></span></span>
-<span><span class="co">#&gt;   source target tag   data            </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      0      0 0_0   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      1      1 1_1   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      2      2 2_2   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      3      3 3_3   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [16]</span></span></span>
+<span><span class="co">#&gt;    source target tag   data            </span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      0      0 0_0   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      0      1 0_1   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      0      2 0_2   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      0      3 0_3   <span style="color: #949494;">&lt;tibble [7 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      1      0 1_0   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      1      1 1_1   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      1      2 1_2   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      1      3 1_3   <span style="color: #949494;">&lt;tibble [7 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2      0 2_0   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2      1 2_1   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>      2      2 2_2   <span style="color: #949494;">&lt;tibble [7 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>      2      3 2_3   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span>      3      0 3_0   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span>      3      1 3_1   <span style="color: #949494;">&lt;tibble [8 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span>      3      2 3_2   <span style="color: #949494;">&lt;tibble [7 × 5]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span>      3      3 3_3   <span style="color: #949494;">&lt;tibble [7 × 5]&gt;</span></span></span></code></pre></div>
 <p>The output is nested by <code>tag</code> — one row per unique
 source–target pair. Unnest to see the per-subject probabilities:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -212,22 +223,22 @@ source–target pair. Unnest to see the per-subject probabilities:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [2]</span></span></span>
 <span><span class="co">#&gt;    tag   source target subject group   nCount     </span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;table[1d]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 0_0        0      0 sub-1   term    1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 0_0        0      0 sub-2   term    1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 0_0        0      0 sub-3   term    1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 0_0        0      0 sub-4   term    1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 0_0        0      0 sub-5   preterm 1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 0_0        0      0 sub-6   preterm 1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 0_0        0      0 sub-7   preterm 1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 0_0        0      0 sub-8   preterm 1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1_1        1      1 sub-1   term    1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1_1        1      1 sub-2   term    1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 1_1        1      1 sub-3   term    1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 1_1        1      1 sub-4   term    1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> 1_1        1      1 sub-5   preterm 1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> 1_1        1      1 sub-6   preterm 1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> 1_1        1      1 sub-7   preterm 1          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> 1_1        1      1 sub-8   preterm 1</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 0_0        0      0 sub-1   term    0.3333333  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 0_0        0      0 sub-2   term    0.3600000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 0_0        0      0 sub-3   term    0.2500000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 0_0        0      0 sub-4   term    0.3809524  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 0_0        0      0 sub-5   preterm 0.1250000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 0_0        0      0 sub-6   preterm 0.3333333  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 0_0        0      0 sub-7   preterm 0.4000000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 0_0        0      0 sub-8   preterm 0.2631579  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 0_1        0      1 sub-1   term    0.2777778  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 0_1        0      1 sub-2   term    0.3200000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 0_1        0      1 sub-3   term    0.1875000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 0_1        0      1 sub-4   term    0.2857143  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> 0_1        0      1 sub-5   preterm 0.3750000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> 0_1        0      1 sub-6   preterm 0.3333333  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> 0_1        0      1 sub-7   preterm 0.3666667  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> 0_1        0      1 sub-8   preterm 0.4210526</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
@@ -250,10 +261,10 @@ transition matrix averaged across subjects, summarise
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 5</span></span></span>
 <span><span class="co">#&gt;   source  to_0  to_1  to_2  to_3</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      0     1    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      1    <span style="color: #BB0000;">NA</span>     1    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      2    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>     1    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      3    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>     1</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      0 0.306 0.321 0.262 0.127</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      1 0.346 0.245 0.236 0.198</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      2 0.419 0.270 0.172 0.160</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      3 0.387 0.267 0.277 0.119</span></span></code></pre></div>
 <p>Each row sums to 1 (within rounding error): given the brain is in
 state <code>source</code>, the row entries are the probabilities of
 transitioning to each possible <code>target</code> on the next time
@@ -288,8 +299,21 @@ self-transitions out of the unnested output using
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">tag</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>mean_prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">nCount</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">mean_prob</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 variables: tag &lt;chr&gt;, mean_prob &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 2</span></span></span>
+<span><span class="co">#&gt;    tag   mean_prob</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2_0       0.419</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 3_0       0.387</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1_0       0.346</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 0_1       0.321</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 3_2       0.277</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2_1       0.270</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 3_1       0.267</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 0_2       0.262</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1_2       0.236</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1_3       0.198</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 2_3       0.160</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 0_3       0.127</span></span></code></pre></div>
 <p>With <code>remIntra = TRUE</code>, rows no longer sum to 1 because
 the diagonal has been removed and the remaining probabilities are
 re-normalised over inter-state transitions only.</p>
@@ -309,10 +333,18 @@ self-transitions, or 12 excluding them.</p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">tag</span> <span class="op">==</span> <span class="st">"1_0"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">group</span>, <span class="va">nCount</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `tag`, `source`, `target`</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 6</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [0]</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6 variables: tag &lt;chr&gt;, source &lt;int&gt;, target &lt;int&gt;, subject &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   group &lt;chr&gt;, nCount &lt;table[1d]&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [1]</span></span></span>
+<span><span class="co">#&gt;   tag   source target subject group   nCount     </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;table[1d]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1_0        1      0 sub-1   term    0.1333333  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1_0        1      0 sub-2   term    0.4666667  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1_0        1      0 sub-3   term    0.3333333  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1_0        1      0 sub-4   term    0.3125000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1_0        1      0 sub-5   preterm 0.3043478  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1_0        1      0 sub-6   preterm 0.3333333  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> 1_0        1      0 sub-7   preterm 0.5714286  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> 1_0        1      0 sub-8   preterm 0.3125000</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
@@ -348,10 +380,18 @@ should be a subset of (or equal to) <code>vars</code>.</li>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">tag</span> <span class="op">==</span> <span class="st">"0_1"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">group</span>, <span class="va">nCount</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `tag`, `source`, `target`</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 6</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [0]</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6 variables: tag &lt;chr&gt;, source &lt;int&gt;, target &lt;int&gt;, subject &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   group &lt;chr&gt;, nCount &lt;table[1d]&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   tag, source, target [1]</span></span></span>
+<span><span class="co">#&gt;   tag   source target subject group   nCount     </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;table[1d]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0_1        0      1 sub-1   term    0.2777778  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 0_1        0      1 sub-2   term    0.3200000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 0_1        0      1 sub-3   term    0.1875000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 0_1        0      1 sub-4   term    0.2857143  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 0_1        0      1 sub-5   preterm 0.3750000  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 0_1        0      1 sub-6   preterm 0.3333333  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> 0_1        0      1 sub-7   preterm 0.3666667  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> 0_1        0      1 sub-8   preterm 0.4210526</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">

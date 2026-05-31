@@ -69,12 +69,6 @@ fo <- nest_fo(
   vars  = c("subject", "group", "pma"),
   foVar = "state"
 )
-#> Loading required package: janitor
-#> 
-#> Attaching package: 'janitor'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     chisq.test, fisher.test
 
 fo
 #> # A tibble: 5 × 2
@@ -195,7 +189,6 @@ trans <- clusters_markov(
   groupBy  = "subject",
   remIntra = FALSE
 )
-#> Loading required package: glue
 
 # Unnest fully to flat frame, re-nest cleanly by tag for modelling
 trans_long <- tidyr::unnest(trans, data)
@@ -214,24 +207,22 @@ trans_results <- trans_long %>%
   dplyr::select(tag, estimate, statistic, p.value) %>%
   dplyr::arrange(p.value)
 #> Adding missing grouping variables: `source`, `target`
-#> Warning: There were 5 warnings in `dplyr::mutate()`.
-#> The first warning was:
-#> ℹ In argument: `tidy = purrr::map(model, broom::tidy)`.
-#> ℹ In group 1: `tag = "0_0"`.
-#> Caused by warning in `summary.lm()`:
-#> ! essentially perfect fit: summary may be unreliable
-#> ℹ Run `dplyr::last_dplyr_warnings()` to see the 4 remaining warnings.
 
 head(trans_results, 10)
-#> # A tibble: 5 × 4
-#> # Groups:   tag [5]
-#>   tag    estimate statistic p.value
-#>   <chr>     <dbl>     <dbl>   <dbl>
-#> 1 0_0   -1.94e-17     -1.39   0.184
-#> 2 1_1   -1.94e-17     -1.39   0.184
-#> 3 2_2   -1.94e-17     -1.39   0.184
-#> 4 3_3   -1.94e-17     -1.39   0.184
-#> 5 4_4   -1.94e-17     -1.39   0.184
+#> # A tibble: 10 × 4
+#> # Groups:   tag [10]
+#>    tag   estimate statistic   p.value
+#>    <chr>    <dbl>     <dbl>     <dbl>
+#>  1 2_0    -0.345      -5.18 0.0000914
+#>  2 0_2     0.303       4.65 0.000228 
+#>  3 3_3    -0.166      -2.91 0.0107   
+#>  4 1_0    -0.193      -2.53 0.0216   
+#>  5 2_2     0.156       2.37 0.0337   
+#>  6 0_4    -0.0701     -2.22 0.0416   
+#>  7 4_0    -0.168      -2.16 0.0466   
+#>  8 1_2     0.122       2.09 0.0551   
+#>  9 4_1     0.126       1.94 0.0695   
+#> 10 3_4     0.133       1.90 0.0765
 ```
 
 ------------------------------------------------------------------------
