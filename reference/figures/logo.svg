@@ -8,37 +8,37 @@
     </clipPath>
   </defs>
 
-  <!-- Background — deep warm peach -->
-  <polygon points="340,0 680,196 680,589 340,785 0,589 0,196" fill="#FFE0C5"/>
+  <!-- Background — warm cream -->
+  <polygon points="340,0 680,196 680,589 340,785 0,589 0,196" fill="#FFF0E4"/>
   <!-- Inner border ring -->
-  <polygon points="340,22 658,208 658,577 340,763 22,577 22,208" fill="none" stroke="#f5c9a0" stroke-width="16"/>
+  <polygon points="340,22 658,208 658,577 340,763 22,577 22,208" fill="none" stroke="#FFE0C5" stroke-width="16"/>
 
   <!-- Transition lines (under nodes) -->
   <path d="M310,195 Q390,168 432,212" fill="none" stroke="#007979" stroke-width="5.5" stroke-linecap="round" opacity="0.7" clip-path="url(#hex-clip)"/>
   <path d="M456,258 Q430,295 398,318" fill="none" stroke="#007979" stroke-width="7" stroke-linecap="round" opacity="0.85" clip-path="url(#hex-clip)"/>
   <path d="M278,234 Q295,278 302,318" fill="none" stroke="#007979" stroke-width="4" stroke-linecap="round" opacity="0.5" clip-path="url(#hex-clip)"/>
-  <path d="M308,368 Q266,390 238,408" fill="none" stroke="#005f5f" stroke-width="6" stroke-linecap="round" opacity="0.75" clip-path="url(#hex-clip)"/>
-  <path d="M384,370 Q420,388 458,400" fill="none" stroke="#007979" stroke-width="3" stroke-linecap="round" opacity="0.4" clip-path="url(#hex-clip)"/>
-  <path d="M268,448 Q340,490 452,440" fill="none" stroke="#007979" stroke-width="2.5" stroke-linecap="round" opacity="0.3" clip-path="url(#hex-clip)"/>
+  <path d="M308,368 Q266,390 238,408" fill="none" stroke="#24B1B1" stroke-width="6" stroke-linecap="round" opacity="0.75" clip-path="url(#hex-clip)"/>
+  <path d="M384,370 Q420,388 458,400" fill="none" stroke="#24B1B1" stroke-width="3" stroke-linecap="round" opacity="0.4" clip-path="url(#hex-clip)"/>
+  <path d="M268,448 Q340,490 452,440" fill="none" stroke="#24B1B1" stroke-width="2.5" stroke-linecap="round" opacity="0.3" clip-path="url(#hex-clip)"/>
   <path d="M498,388 Q540,310 494,258" fill="none" stroke="#007979" stroke-width="2" stroke-linecap="round" opacity="0.2" clip-path="url(#hex-clip)"/>
   <path d="M208,408 Q148,320 248,230" fill="none" stroke="#007979" stroke-width="2" stroke-linecap="round" opacity="0.18" clip-path="url(#hex-clip)"/>
 
   <!-- State nodes -->
   <circle cx="258" cy="218" r="42" fill="#007979" clip-path="url(#hex-clip)"/>
   <circle cx="474" cy="234" r="38" fill="#007979" clip-path="url(#hex-clip)"/>
-  <circle cx="340" cy="344" r="54" fill="#005f5f" clip-path="url(#hex-clip)"/>
-  <circle cx="218" cy="432" r="36" fill="#007979" clip-path="url(#hex-clip)"/>
-  <circle cx="480" cy="422" r="44" fill="#007979" clip-path="url(#hex-clip)"/>
+  <circle cx="340" cy="344" r="54" fill="#007979" clip-path="url(#hex-clip)"/>
+  <circle cx="218" cy="432" r="36" fill="#24B1B1" clip-path="url(#hex-clip)"/>
+  <circle cx="480" cy="422" r="44" fill="#24B1B1" clip-path="url(#hex-clip)"/>
 
   <!-- Node labels -->
-  <text x="258" y="226" text-anchor="middle" font-family="'Georgia', serif" font-size="24" font-weight="700" fill="#FFE0C5" clip-path="url(#hex-clip)">0</text>
-  <text x="474" y="242" text-anchor="middle" font-family="'Georgia', serif" font-size="22" font-weight="700" fill="#FFE0C5" clip-path="url(#hex-clip)">1</text>
-  <text x="340" y="352" text-anchor="middle" font-family="'Georgia', serif" font-size="28" font-weight="700" fill="#FFE0C5" clip-path="url(#hex-clip)">4</text>
-  <text x="218" y="440" text-anchor="middle" font-family="'Georgia', serif" font-size="21" font-weight="700" fill="#FFE0C5" clip-path="url(#hex-clip)">2</text>
-  <text x="480" y="430" text-anchor="middle" font-family="'Georgia', serif" font-size="25" font-weight="700" fill="#FFE0C5" clip-path="url(#hex-clip)">3</text>
+  <text x="258" y="226" text-anchor="middle" font-family="'Georgia', serif" font-size="24" font-weight="700" fill="#FFF0E4" clip-path="url(#hex-clip)">0</text>
+  <text x="474" y="242" text-anchor="middle" font-family="'Georgia', serif" font-size="22" font-weight="700" fill="#FFF0E4" clip-path="url(#hex-clip)">1</text>
+  <text x="340" y="352" text-anchor="middle" font-family="'Georgia', serif" font-size="28" font-weight="700" fill="#FFF0E4" clip-path="url(#hex-clip)">4</text>
+  <text x="218" y="440" text-anchor="middle" font-family="'Georgia', serif" font-size="21" font-weight="700" fill="#FFF0E4" clip-path="url(#hex-clip)">2</text>
+  <text x="480" y="430" text-anchor="middle" font-family="'Georgia', serif" font-size="25" font-weight="700" fill="#FFF0E4" clip-path="url(#hex-clip)">3</text>
 
   <!-- Package name -->
-  <text x="340" y="626" text-anchor="middle" font-family="'Georgia', serif" font-size="88" font-weight="700" fill="#007979" letter-spacing="1" clip-path="url(#hex-clip)">state<tspan fill="#005f5f">R</tspan></text>
+  <text x="340" y="626" text-anchor="middle" font-family="'Georgia', serif" font-size="88" font-weight="700" fill="#007979" letter-spacing="1" clip-path="url(#hex-clip)">state<tspan fill="#24B1B1">R</tspan></text>
 
   <!-- Outer border -->
   <polygon points="340,0 680,196 680,589 340,785 0,589 0,196" fill="none" stroke="#007979" stroke-width="10"/>
